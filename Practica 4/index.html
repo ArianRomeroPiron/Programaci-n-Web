@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de la compra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="etiqueta">SUPERMERCADO</p>
+      <h1>Lista de la compra</h1>
+      <p>Agrega tus productos y márcalos cuando los tengas.</p>
+    </header>
+
+    <form id="formulario" novalidate>
+      <label for="producto">¿Qué necesitas comprar?</label>
+      <div class="entrada">
+        <input id="producto" type="text" placeholder="Ej. Leche, arroz o plátanos"
+          autocomplete="off" aria-describedby="error">
+        <button type="submit">Agregar</button>
+      </div>
+      <p id="error" class="error" role="alert"></p>
+    </form>
+
+    <section aria-labelledby="titulo-lista">
+      <div class="barra-lista">
+        <h2 id="titulo-lista">Mis productos</h2>
+        <button id="ordenar" type="button" class="secundario">Ordenar A-Z</button>
+      </div>
+      <p id="resumen" class="resumen" role="status"></p>
+      <ul id="lista" aria-label="Productos de la compra"></ul>
+      <p id="vacio" class="vacio">Tu lista está vacía. Agrega el primer producto.</p>
+    </section>
+    <footer>Práctica 4 · Arian Romero Piron · 2025-0896</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
