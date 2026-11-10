@@ -23,7 +23,7 @@ function renderLista() {
 
     const nombre = document.createElement("label");
     nombre.htmlFor = checkbox.id;
-    // textContent muestra lo escrito como texto y evita interpretarlo como HTML.
+    //Saltar
     nombre.textContent = producto.nombre;
 
     const eliminar = document.createElement("button");
