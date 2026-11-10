@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explorador de personajes | Rick and Morty</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header><p>RICK AND MORTY</p><h1>Explorador de personajes</h1></header>
+    <form id="busqueda">
+      <label for="nombre">Nombre del personaje</label>
+      <div class="controles"><input id="nombre" type="search" placeholder="Ejemplo: Rick"><button id="buscar">Buscar</button></div>
+    </form>
+    <p id="mensaje" role="status" aria-live="polite"></p>
+    <section id="personajes" aria-label="Personajes"></section>
+    <nav aria-label="Páginas de resultados"><button id="anterior" disabled>Anterior</button><button id="siguiente" disabled>Siguiente</button></nav>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
