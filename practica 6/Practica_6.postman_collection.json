@@ -1,0 +1,135 @@
+{
+  "info": {
+    "name": "Practica 6 - Arian Romero Piron",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1 Crear producto 201",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Audifonos Bluetooth\",\n  \"descripcion\": \"Audifonos inalambricos con microfono\",\n  \"precio\": 2200\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "2 Falta precio 400",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Sin precio\",\n  \"descripcion\": \"Prueba\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "3 Actualizar producto 200",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos/2",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Mouse inalambrico ergonomico\",\n  \"descripcion\": \"Mouse optico inalambrico con 6 botones\",\n  \"precio\": 850\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "4 Actualizar inexistente 404",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos/999",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"No existe\",\n  \"descripcion\": \"Prueba\",\n  \"precio\": 20\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "5 Eliminar producto 200",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos/3"
+      }
+    },
+    {
+      "name": "6 Eliminar inexistente 404",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos/999"
+      }
+    },
+    {
+      "name": "7 Listar productos finales 200",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/productos"
+      }
+    }
+  ]
+}
