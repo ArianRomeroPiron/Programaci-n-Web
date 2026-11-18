@@ -1,0 +1,115 @@
+const express = require('express')
+const app = express()
+
+app.use(express.json())
+
+const productos = [
+    {
+        id: 1,
+        nombre: 'Teclado inalambrico',
+        descripcion: 'Teclado 101 teclas idioma ingles',
+        precio: 1500.00
+    },
+    {
+        id: 2,
+        nombre: 'Mouse inalambrico',
+        descripcion: 'Mouse optico inalambrico.',
+        precio: 600.00
+    },
+    {
+        id: 3,
+        nombre: 'Monitor 23.5 pulgadas full hd',
+        descripcion: 'Monitor Full HD panel IPS',
+        precio: 6500.00
+    }
+]
+
+// GET - Listar todos los productos
+app.get('/productos', (req, res) => {
+    res.json(productos)
+})
+
+// GET - Obtener un producto por id
+app.get('/productos/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+    const producto = productos.find(p => p.id === id)
+
+    if (!producto) {
+        return res.status(404).json({ mensaje: 'Producto no encontrado' })
+    }
+
+    res.json(producto)
+})
+
+
+// ============================================================
+// PRÁCTICA 6: Completa los siguientes métodos de la API
+// ============================================================
+
+let siguienteId = Math.max(...productos.map(producto => producto.id)) + 1
+
+// Se comparte la validación para que POST y PUT acepten los mismos datos.
+function validarProducto(datos) {
+    if (!datos || typeof datos.nombre !== 'string' || !datos.nombre.trim() ||
+        typeof datos.descripcion !== 'string' || !datos.descripcion.trim() ||
+        datos.precio === undefined || datos.precio === null || datos.precio === '') {
+        return 'Los campos nombre, descripcion y precio son obligatorios'
+    }
+    const precio = parseFloat(datos.precio)
+    if (!['string', 'number'].includes(typeof datos.precio) ||
+        !Number.isFinite(Number(datos.precio)) || !Number.isFinite(precio) || precio <= 0) {
+        return 'El precio debe ser un numero mayor que cero'
+    }
+    return null
+}
+
+app.post('/productos', (req, res) => {
+    const error = validarProducto(req.body)
+    if (error) return res.status(400).json({ mensaje: error })
+    const producto = {
+        id: siguienteId++,
+        nombre: req.body.nombre.trim(),
+        descripcion: req.body.descripcion.trim(),
+        precio: parseFloat(req.body.precio)
+    }
+    productos.push(producto)
+    res.status(201).json(producto)
+})
+
+
+app.put('/productos/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const posicion = productos.findIndex(producto => producto.id === id)
+    if (posicion === -1) return res.status(404).json({ mensaje: 'Producto no encontrado' })
+    const error = validarProducto(req.body)
+    if (error) return res.status(400).json({ mensaje: error })
+    productos[posicion] = {
+        id,
+        nombre: req.body.nombre.trim(),
+        descripcion: req.body.descripcion.trim(),
+        precio: parseFloat(req.body.precio)
+    }
+    res.status(200).json(productos[posicion])
+})
+
+
+app.delete('/productos/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const posicion = productos.findIndex(producto => producto.id === id)
+    if (posicion === -1) return res.status(404).json({ mensaje: 'Producto no encontrado' })
+    const [producto] = productos.splice(posicion, 1)
+    res.status(200).json({ mensaje: 'Producto eliminado', producto })
+})
+
+app.use((req, res) => res.status(404).json({ mensaje: 'Ruta no encontrada' }))
+app.use((error, req, res, next) => {
+    const estado = error.status >= 400 && error.status < 500 ? error.status : 500
+    res.status(estado).json({ mensaje: estado === 400 ? 'El cuerpo debe contener JSON valido' : 'No se pudo procesar la solicitud' })
+})
+
+
+if (require.main === module) app.listen(3000, () => {
+    console.log('Servidor corriendo en http://localhost:3000')
+})
+
+module.exports = app
