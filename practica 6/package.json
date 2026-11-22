@@ -1,11 +1,12 @@
 {
   "name": "practica-6-api-productos",
   "version": "1.0.0",
-  "description": "Práctica 6 - API REST de productos con Express (completar POST, PUT y DELETE)",
+  "description": "Práctica 6 - API REST de productos con Express",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node --watch app.js"
+    "dev": "node --watch app.js",
+    "test": "node pruebas.cjs"
   },
   "dependencies": {
     "express": "^4.21.2"

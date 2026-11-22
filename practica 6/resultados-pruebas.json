@@ -1,0 +1,130 @@
+[
+  {
+    "metodo": "POST",
+    "ruta": "/productos",
+    "estado": 201,
+    "respuesta": {
+      "id": 4,
+      "nombre": "Audifonos Bluetooth",
+      "descripcion": "Audifonos inalambricos con microfono",
+      "precio": 2200
+    }
+  },
+  {
+    "metodo": "POST",
+    "ruta": "/productos",
+    "estado": 400,
+    "respuesta": {
+      "mensaje": "Los campos nombre, descripcion y precio son obligatorios"
+    }
+  },
+  {
+    "metodo": "PUT",
+    "ruta": "/productos/2",
+    "estado": 200,
+    "respuesta": {
+      "id": 2,
+      "nombre": "Mouse inalambrico ergonomico",
+      "descripcion": "Mouse optico inalambrico con 6 botones",
+      "precio": 850
+    }
+  },
+  {
+    "metodo": "PUT",
+    "ruta": "/productos/999",
+    "estado": 404,
+    "respuesta": {
+      "mensaje": "Producto no encontrado"
+    }
+  },
+  {
+    "metodo": "DELETE",
+    "ruta": "/productos/3",
+    "estado": 200,
+    "respuesta": {
+      "mensaje": "Producto eliminado",
+      "producto": {
+        "id": 3,
+        "nombre": "Monitor 23.5 pulgadas full hd",
+        "descripcion": "Monitor Full HD panel IPS",
+        "precio": 6500
+      }
+    }
+  },
+  {
+    "metodo": "DELETE",
+    "ruta": "/productos/999",
+    "estado": 404,
+    "respuesta": {
+      "mensaje": "Producto no encontrado"
+    }
+  },
+  {
+    "metodo": "GET",
+    "ruta": "/productos",
+    "estado": 200,
+    "respuesta": [
+      {
+        "id": 1,
+        "nombre": "Teclado inalambrico",
+        "descripcion": "Teclado 101 teclas idioma ingles",
+        "precio": 1500
+      },
+      {
+        "id": 2,
+        "nombre": "Mouse inalambrico ergonomico",
+        "descripcion": "Mouse optico inalambrico con 6 botones",
+        "precio": 850
+      },
+      {
+        "id": 4,
+        "nombre": "Audifonos Bluetooth",
+        "descripcion": "Audifonos inalambricos con microfono",
+        "precio": 2200
+      }
+    ]
+  },
+  {
+    "metodo": "PUT",
+    "ruta": "/productos/2",
+    "estado": 400,
+    "respuesta": {
+      "mensaje": "Los campos nombre, descripcion y precio son obligatorios"
+    }
+  },
+  {
+    "metodo": "POST",
+    "ruta": "/productos",
+    "estado": 400,
+    "respuesta": {
+      "mensaje": "El precio debe ser un numero mayor que cero"
+    }
+  },
+  {
+    "metodo": "POST",
+    "ruta": "/productos",
+    "estado": 400,
+    "respuesta": {
+      "mensaje": "El precio debe ser un numero mayor que cero"
+    }
+  },
+  {
+    "metodo": "POST",
+    "ruta": "/productos",
+    "estado": 400,
+    "respuesta": {
+      "mensaje": "El cuerpo debe contener JSON valido"
+    }
+  },
+  {
+    "metodo": "POST",
+    "ruta": "/productos",
+    "estado": 201,
+    "respuesta": {
+      "id": 5,
+      "nombre": "Producto posterior",
+      "descripcion": "ID sin reutilizar",
+      "precio": 10
+    }
+  }
+]
