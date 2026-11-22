@@ -21,9 +21,9 @@ function renderLista() {
     checkbox.id = `producto-${indice}`;
     checkbox.checked = producto.completado;
 
+    // saltar
     const nombre = document.createElement("label");
     nombre.htmlFor = checkbox.id;
-    //Saltar
     nombre.textContent = producto.nombre;
 
     const eliminar = document.createElement("button");
