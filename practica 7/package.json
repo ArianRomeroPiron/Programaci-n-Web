@@ -1,0 +1,15 @@
+{
+  "name": "practica7-api-mongodb",
+  "version": "1.0.0",
+  "description": "Practica 7 - API de productos con Node.js, Express y MongoDB (Mongoose)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "mongoose": "^9.13.1"
+  }
+}
